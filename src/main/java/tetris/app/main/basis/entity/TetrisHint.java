@@ -29,7 +29,7 @@ public class TetrisHint {
         int[] hints = new int[5];
         random = new Random();
         for (int i = 0; i < hints.length; i++) {
-            hints[i] = random.nextInt(Block.values().length-1);
+            hints[i] = random.nextInt(Block.values().length);
             for (int j = 0; j < i; j++) {
                 if(hints[i] == hints[j]){
                     i--;

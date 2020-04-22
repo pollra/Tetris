@@ -1,6 +1,7 @@
 package tetris.app.main.basis.entity;
 
 import tetris.app.main.basis.exception.BoardException;
+import tetris.app.main.tools.MyArrays;
 
 /**
  * @since       2020.03.29
@@ -46,10 +47,12 @@ public class TetrisBoard {
     }
 
     public int[][] getCombinationBoard(int[][] blockSpace){
-        int[][] result = new int[24][12];
+        int[][] result = MyArrays.clone2D(gameBoard);
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard[i].length; j++) {
-                result[i][j] = gameBoard[i][j] + blockSpace[i][j];
+                if(blockSpace[i][j] > 0 && result[i][j]+blockSpace[i][j] == blockSpace[i][j]){
+                    result[i][j] = blockSpace[i][j];
+                }
             }
         }
         return result;
@@ -67,7 +70,29 @@ public class TetrisBoard {
 
 
     public void save(int[][] blockSpace){
-        this.gameBoard = getCombinationBoard(blockSpace);
+        int[][] saveBoard = setSaveBlock(blockSpace);
+
+        this.gameBoard = setSaveBlock(blockSpace);
+    }
+
+    private int[][] setSaveBlock(int[][] blockSpace){
+        int[][] saveBlock = MyArrays.clone2D(getCombinationBoard(blockSpace));
+        for (int i = 0; i < saveBlock.length; i++) {
+            for (int j = 0; j < saveBlock[i].length; j++) {
+                if(saveBlock[i][j] > 0 && saveBlock[i][j] <= Block.values().length){
+                    saveBlock[i][j] += 10;
+                }
+            }
+        }
+        return saveBlock;
+    }
+
+    private void deleteLine(int[][] board){
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+
+            }
+        }
     }
 
 }

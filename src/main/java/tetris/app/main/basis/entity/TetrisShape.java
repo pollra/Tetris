@@ -1,6 +1,6 @@
 package tetris.app.main.basis.entity;
 
-import java.util.Arrays;
+import tetris.app.main.tools.MyArrays;
 
 /**
  * @since       2020.03.29
@@ -16,12 +16,7 @@ public class TetrisShape {
     }
 
     public int[][] currentShapePrinter(){
-        System.out.print("shape: ");
-        for (int i = 0; i < shapeLocations.length; i++) {
-            System.out.print(Arrays.toString(shapeLocations[i]));
-        }
-        System.out.println();
-        return array2DClone(shapeLocations);
+        return MyArrays.clone2D(shapeLocations);
     }
 
     public void rotateRight() {
@@ -36,13 +31,5 @@ public class TetrisShape {
         int temp = block[0];
         block[0] = block[1];
         block[1] = temp;
-    }
-
-    public int[][] array2DClone(int[][] target){
-        int[][] result = new int[4][2];
-        for (int i = 0; i < target.length; i++) {
-            result[i] = Arrays.copyOf(target[i], target[i].length);
-        }
-        return result;
     }
 }

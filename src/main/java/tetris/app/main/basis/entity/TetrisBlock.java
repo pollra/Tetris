@@ -18,34 +18,33 @@ public class TetrisBlock {
     private static final int HEIGHT_MIN = 0;
 
     private static final int[][] DEFAULT_GAME_BOARD = new int[][]{
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1},
+            {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
     };
     private static final int[] DEFAULT_BLOCK_LOCATION = {1, 5};
 
-    private int[][] blockSpace;
     private int[] currentLocation;
     private int[] testLocation;
     private TetrisShape tetrisShape;
@@ -54,14 +53,12 @@ public class TetrisBlock {
     public TetrisBlock(Block block) {
         this.currentBlock = block;
         this.tetrisShape = new TetrisShape(this.currentBlock);
-        this.blockSpace = MyArrays.clone2D(DEFAULT_GAME_BOARD);
         this.currentLocation = Arrays.copyOf(DEFAULT_BLOCK_LOCATION, DEFAULT_BLOCK_LOCATION.length);
         this.testLocation = Arrays.copyOf(DEFAULT_BLOCK_LOCATION, DEFAULT_BLOCK_LOCATION.length);
     }
 
     public void newBlock(Block block){
         this.currentBlock = block;
-        this.blockSpace = MyArrays.clone2D(DEFAULT_GAME_BOARD);
         this.currentLocation = Arrays.copyOf(DEFAULT_BLOCK_LOCATION, DEFAULT_BLOCK_LOCATION.length);
         this.tetrisShape = new TetrisShape(currentBlock);
     }
@@ -71,6 +68,17 @@ public class TetrisBlock {
         locationMove(testLocation, move);
         int[][] shape = MyArrays.clone2D(tetrisShape.currentShapePrinter());
         return combinationBlockSpace(shape);
+    }
+
+    public int[][] getCurrentBlockSpace(){
+        int[][] shape = tetrisShape.currentShapePrinter();
+        int[][] space = MyArrays.clone2D(DEFAULT_GAME_BOARD);
+        for (int i = 0; i < shape.length; i++) {
+            space[shape[i][0] + currentLocation[0]]
+                [shape[i][1] + currentLocation[1]]
+                = getCurrentColor();
+        }
+        return space;
     }
 
     public void realMove(Direction move){
@@ -133,22 +141,10 @@ public class TetrisBlock {
         tetrisShape.rotateRight();
     }
 
-
-
-
-
-    private void printfBlockSpace(){
-        for (int[] item : this.blockSpace){
-            System.out.println(Arrays.toString(item));
-        }
+    public void transformRollBack(){
+        tetrisShape.rotateRight();
+        tetrisShape.rotateRight();
+        tetrisShape.rotateRight();
     }
 
-    private void spaceClean(){
-        int[][] defaultGameBoard = MyArrays.clone2D(DEFAULT_GAME_BOARD);
-        for (int x = 0; x < defaultGameBoard.length; x++) {
-            for (int y = 0; y < defaultGameBoard[x].length; y++) {
-                blockSpace[x][y] = defaultGameBoard[x][y];
-            }
-        }
-    }
 }

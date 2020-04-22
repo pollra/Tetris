@@ -2,6 +2,7 @@ package tetris.app.main.basis.service;
 
 import tetris.app.main.basis.entity.*;
 import tetris.app.main.basis.exception.BusinessException;
+import tetris.app.main.tools.MyArrays;
 
 /**
  * @since       2020.03.29
@@ -26,9 +27,14 @@ public class TetrisServiceImpl implements TetrisService{
     public int[][] transform() {
         System.out.println("transform order start");
         block.transform();
-        int[][] mockBlock = block.createMockBlockSpaceTo(Direction.CURRENT);
-        int[][] boardSpace = board.getCombinationBoard(mockBlock);
-        return board.combinationCheck(boardSpace, block.getBlockLocationShape(), block.getCurrentColor());
+        try {
+            int[][] mockBlock = block.createMockBlockSpaceTo(Direction.CURRENT);
+            int[][] boardSpace = board.getCombinationBoard(mockBlock);
+            return board.combinationCheck(boardSpace, block.getBlockLocationShape(), block.getCurrentColor());
+        }catch(BusinessException e){
+            block.transformRollBack();
+            throw new BusinessException("변형 불가한 영역 입니다");
+        }
     }
 
     @Override
@@ -36,7 +42,7 @@ public class TetrisServiceImpl implements TetrisService{
         System.out.println("leftMove order start");
         int[][] mockBlock = block.createMockBlockSpaceTo(Direction.LEFT);
         int[][] boardSpace = board.getCombinationBoard(mockBlock);
-        int[][] result =  board.combinationCheck(boardSpace, block.getBlockLocationShape(), block.getCurrentColor());
+        int[][] result = board.combinationCheck(boardSpace, block.getBlockLocationShape(), block.getCurrentColor());
         block.realMove(Direction.LEFT);
         return result;
     }
@@ -54,7 +60,13 @@ public class TetrisServiceImpl implements TetrisService{
     private int[][] downMoveAuto() {
         int[][] mockBlock = block.createMockBlockSpaceTo(Direction.DOWN);
         int[][] boardSpace = board.getCombinationBoard(mockBlock);
-        int[][] result =  board.combinationCheck(boardSpace, block.getBlockLocationShape(), block.getCurrentColor());
+        int[][] result = MyArrays.clone2D(
+                board.combinationCheck(
+                        boardSpace,
+                        block.getBlockLocationShape(),
+                        block.getCurrentColor()
+                )
+        );
         block.realMove(Direction.DOWN);
         return result;
     }
@@ -66,9 +78,9 @@ public class TetrisServiceImpl implements TetrisService{
             result = downMoveAuto();
         }catch (BusinessException e){
             System.out.println(e.getMessage());
-            result = currentBoard();
-            board.save(result);
+            board.save(block.getCurrentBlockSpace());
             block.newBlock(hint.next());
+            result = board.getCombinationBoard(board.currentBoardPrint());
         }
         return result;
     }

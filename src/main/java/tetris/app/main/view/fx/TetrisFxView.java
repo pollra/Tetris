@@ -96,21 +96,27 @@ public class TetrisFxView extends Application {
         final String BACKGROUND_COLOR = "-fx-background-color: #";
 //        System.out.print("colorNumber: "+ colorNumber);
         switch (colorNumber){
-            case -2:
             case -1:
                 return BACKGROUND_COLOR+ Color.BLOCK.getCode()+";";
+            case 11:
             case 1:
                 return BACKGROUND_COLOR+ Color.RED.getCode()+";";
+            case 12:
             case 2:
                 return BACKGROUND_COLOR+ Color.ORANGE.getCode()+";";
+            case 13:
             case 3:
                 return BACKGROUND_COLOR+ Color.YELLOW.getCode()+";";
+            case 14:
             case 4:
                 return BACKGROUND_COLOR+ Color.GREEN.getCode()+";";
+            case 15:
             case 5:
                 return BACKGROUND_COLOR+ Color.BLUE.getCode()+";";
+            case 16:
             case 6:
                 return BACKGROUND_COLOR+ Color.PURPLE.getCode()+";";
+            case 17:
             case 7:
                 return BACKGROUND_COLOR+ Color.SKY.getCode()+";";
             default:

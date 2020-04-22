@@ -1,7 +1,5 @@
 package tetris.app.main.basis.service;
 
-import tetris.app.main.command.entity.Command;
-
 /**
  * @since       2020.03.29
  * @author      pollra
