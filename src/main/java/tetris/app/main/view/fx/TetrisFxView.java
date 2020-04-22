@@ -51,7 +51,6 @@ public class TetrisFxView extends Application {
             while (gameRunning) {
                 Platform.runLater(()->{
                     int[][] downResult = tetrisService.downMove();
-                    print(downResult);
                     scene.setRoot(updateMap(downResult));
                 });
                 try {
@@ -64,12 +63,6 @@ public class TetrisFxView extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private void print(int[][] downResult) {
-        for (int i = 0; i < downResult.length; i++) {
-            System.out.println(Arrays.toString(downResult[i]));
-        }
     }
 
     public GridPane updateMap(int[][] arr){

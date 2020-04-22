@@ -147,4 +147,8 @@ public class TetrisBlock {
         tetrisShape.rotateRight();
     }
 
+    public int getHeightLocation(){
+        return this.currentLocation[0];
+    }
+
 }

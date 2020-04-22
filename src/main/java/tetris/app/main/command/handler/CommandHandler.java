@@ -36,8 +36,7 @@ public class CommandHandler {
                 System.out.println("아직 구현되지 않은 기능 입니다");
 //                return tetrisService.stop();
             case SPACE:
-                System.out.println("아직 구현되지 않은 기능 입니다");
-//                return tetrisService.fastDown();
+                return tetrisService.fastDown();
             default:
                 throw new CommandNotFoundException("지원되지 않는 커맨드 입력입니다.");
         }

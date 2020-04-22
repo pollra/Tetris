@@ -94,7 +94,14 @@ public class TetrisServiceImpl implements TetrisService{
     @Override
     public int[][] fastDown() {
         System.out.println("fastDown order start");
-        return null;
+        for (int i = 0; i < 22; i++) {
+            try {
+                downMoveAuto();
+            }catch (BusinessException e){
+                return downMove();
+            }
+        }
+        return downMove();
     }
 
     @Override
