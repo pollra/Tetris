@@ -11,11 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import tetris.app.main.basis.entity.Color;
-import tetris.app.main.basis.service.TetrisService;
-import tetris.app.main.basis.service.TetrisServiceImpl;
+import tetris.app.main.basis.service.GameBoard;
+import tetris.app.main.basis.service.GameBoardImpl;
 import tetris.app.main.command.handler.CommandHandler;
-
-import java.util.Arrays;
 
 /**
  * @author pollra
@@ -25,9 +23,9 @@ import java.util.Arrays;
 public class TetrisFxView extends Application {
 
     private static boolean gameRunning = true;
-    private static int[][] gameBoard = new int[24][12];
-    private static TetrisService tetrisService = new TetrisServiceImpl();
-    private static CommandHandler commandHandler = new CommandHandler(tetrisService);
+    private static int[][] saveBoard = new int[24][12];
+    private static GameBoard gameBoard = new GameBoardImpl();
+    private static CommandHandler commandHandler = new CommandHandler(gameBoard);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -50,7 +48,7 @@ public class TetrisFxView extends Application {
         Thread thread = new Thread(() -> {
             while (gameRunning) {
                 Platform.runLater(()->{
-                    int[][] downResult = tetrisService.downMove();
+                    int[][] downResult = gameBoard.downMove();
                     scene.setRoot(updateMap(downResult));
                 });
                 try {
@@ -86,34 +84,34 @@ public class TetrisFxView extends Application {
     }
 
     public String getColor(int colorNumber){
-        final String BACKGROUND_COLOR = "-fx-background-color: #";
-//        System.out.print("colorNumber: "+ colorNumber);
+        StringBuilder fxCssSyntax = new StringBuilder();
+        fxCssSyntax.append("-fx-background-color: #");
         switch (colorNumber){
             case -1:
-                return BACKGROUND_COLOR+ Color.BLOCK.getCode()+";";
+                return fxCssSyntax.append(Color.BLOCK.getCode()+";").toString();
             case 11:
             case 1:
-                return BACKGROUND_COLOR+ Color.RED.getCode()+";";
+                return fxCssSyntax.append(Color.RED.getCode()+";").toString();
             case 12:
             case 2:
-                return BACKGROUND_COLOR+ Color.ORANGE.getCode()+";";
+                return fxCssSyntax.append(Color.ORANGE.getCode()+";").toString();
             case 13:
             case 3:
-                return BACKGROUND_COLOR+ Color.YELLOW.getCode()+";";
+                return fxCssSyntax.append(Color.YELLOW.getCode()+";").toString();
             case 14:
             case 4:
-                return BACKGROUND_COLOR+ Color.GREEN.getCode()+";";
+                return fxCssSyntax.append(Color.GREEN.getCode()+";").toString();
             case 15:
             case 5:
-                return BACKGROUND_COLOR+ Color.BLUE.getCode()+";";
+                return fxCssSyntax.append(Color.BLUE.getCode()+";").toString();
             case 16:
             case 6:
-                return BACKGROUND_COLOR+ Color.PURPLE.getCode()+";";
+                return fxCssSyntax.append(Color.PURPLE.getCode()+";").toString();
             case 17:
             case 7:
-                return BACKGROUND_COLOR+ Color.SKY.getCode()+";";
+                return fxCssSyntax.append(Color.SKY.getCode()+";").toString();
             default:
-                return BACKGROUND_COLOR+ Color.WHITE.getCode()+";";
+                return fxCssSyntax.append(Color.WHITE.getCode()+";").toString();
         }
     }
 }

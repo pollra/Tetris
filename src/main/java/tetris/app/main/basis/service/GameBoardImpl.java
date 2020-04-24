@@ -9,7 +9,7 @@ import tetris.app.main.tools.MyArrays;
  * @author      pollra
  * @description TetrisMapService
  **********************************************************************************************************************/
-public class TetrisServiceImpl implements TetrisService{
+public class GameBoardImpl implements GameBoard {
 
     private TetrisBoard board;
     private TetrisBlock block;
@@ -17,7 +17,7 @@ public class TetrisServiceImpl implements TetrisService{
 
     private int wallDownCount = 0;
 
-    public TetrisServiceImpl() {
+    public GameBoardImpl() {
         this.board = new TetrisBoard();
         this.hint = new TetrisHint();
         this.block = new TetrisBlock(hint.currentHint());
@@ -79,6 +79,8 @@ public class TetrisServiceImpl implements TetrisService{
         }catch (BusinessException e){
             System.out.println(e.getMessage());
             board.save(block.getCurrentBlockSpace());
+            board.eraseLine();
+            board.blocksPullDown();
             block.newBlock(hint.next());
             result = board.getCombinationBoard(board.currentBoardPrint());
         }
@@ -98,7 +100,7 @@ public class TetrisServiceImpl implements TetrisService{
             try {
                 downMoveAuto();
             }catch (BusinessException e){
-                return downMove();
+                break;
             }
         }
         return downMove();
@@ -109,6 +111,5 @@ public class TetrisServiceImpl implements TetrisService{
         System.out.println("stop order start");
         return null;
     }
-
 
 }

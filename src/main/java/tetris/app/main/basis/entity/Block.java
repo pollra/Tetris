@@ -13,7 +13,7 @@ public enum Block {
     Z(new int[][]{{-1, 0}, {0, 0}, {-1, -1}, {0, 1}} , Color.YELLOW),
     S(new int[][]{{-1, 0}, {0, 0}, {-1, 1}, {0, -1}} , Color.GREEN),
     T(new int[][]{{-1, 0}, {0, 0}, {0, 1}, {0, -1}}  , Color.SKY),
-    O(new int[][]{{-1, 0}, {0, 0}, {0, 1}, {-1, -1}} , Color.BLUE),
+    O(new int[][]{{-1, 0}, {0, 0}, {0, 1}, {-1, 1}} , Color.BLUE),
     I(new int[][]{{-1, 0}, {0, 0}, {1, 0}, {2, 0}}   , Color.PURPLE);
 
     private int[][] defaultLocation;

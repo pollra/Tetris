@@ -3,13 +3,13 @@ package tetris.app.main.basis.entity;
 public enum Color {
     BLOCK ("block" , -1, "111111"),
     WHITE ("white" , 0 , "FFFFFF"),
-    RED   ("red"   , 1 , "FF675C"),
-    ORANGE("orange", 2 , "FFB15E"),
-    YELLOW("yellow", 3 , "FFF25E"),
+    RED   ("red"   , 1 , "e86981"),
+    ORANGE("orange", 2 , "ef944a"),
+    YELLOW("yellow", 3 , "fdc73a"),
     GREEN ("green" , 4 , "91FF5E"),
-    SKY   ("sky"   , 5 , "5EFFFA"),
-    BLUE  ("blue"  , 6 , "5E73FF"),
-    PURPLE("purple", 7 , "B75EFF");
+    SKY   ("sky"   , 5 , "44b9e0"),
+    BLUE  ("blue"  , 6 , "6c86e4"),
+    PURPLE("purple", 7 , "cd66ce");
 
     private String name;
     private Integer number;

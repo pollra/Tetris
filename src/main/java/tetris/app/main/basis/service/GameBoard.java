@@ -5,7 +5,7 @@ package tetris.app.main.basis.service;
  * @author      pollra
  * @description TetrisService
  **********************************************************************************************************************/
-public interface TetrisService {
+public interface GameBoard {
 
     int[][] leftMove();
     int[][] rightMove();
